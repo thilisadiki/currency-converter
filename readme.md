@@ -77,7 +77,7 @@ Semantic HTML: Use of tags like <main>, <section>, <aside>, <nav>, and <figure> 
 
 ARIA Roles: Added ARIA attributes to interactive elements like buttons and charts to enhance accessibility for screen readers.
 
-Content Hierarchy: Proper use of heading tags (<h1>, <h2>, <h3>) to structure content logically.
+Content Hierarchy: Proper use of heading tags <h1>, <h2>, <h3> to structure content logically.
 
 Internal & External Linking: Strategic placement of links to other tools and reputable financial sources to build authority.
 
