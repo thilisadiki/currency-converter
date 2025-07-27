@@ -175,7 +175,7 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
                 }
             });
         }
-        const API_KEY = '439e345f64a79ca604381081'; // Replace with your actual API key
+        const API_KEY = 'YOUR API'; // Replace with your actual API key
         const BASE_URL = 'https://v6.exchangerate-api.com/v6';
         
         // Cache for storing exchange rates and currencies to minimize API calls
