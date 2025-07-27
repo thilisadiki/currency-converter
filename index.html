@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Currency Converter | Exchange Rates</title>
+    <meta name="description" content="A fast and accurate currency converter with real-time exchange rates. Convert over 170 currencies with interactive charts and historical data.">
+    <meta name="keywords" content="currency converter, exchange rates, forex, money converter, currency calculator, real-time rates">
+    <meta name="author" content="Jason Sadiki">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                💱 CurrencyConvert
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        🏠 Convert
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        📊 Charts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        📈 Rates
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        📱 API
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        ℹ️ About
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+                ☰
+            </button>
+
+            <!-- Mobile Menu -->
+            <ul class="nav-menu mobile" id="mobileMenu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        🏠 Convert
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        📊 Charts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        📈 Rates
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        📱 API
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        ℹ️ About
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content-wrapper">
+        <div class="main-content">
+            <main class="container">
+                <section class="header">
+                    <h1 class="currency-title">
+                        <span id="currencyPairTitle">1 South African Rand equals</span>
+                        <button class="share-btn" aria-label="Share">⋮</button>
+                    </h1>
+                    <div class="exchange-rate" id="exchangeRate">0.00</div>
+                    <div class="rate-info">
+                        <time id="lastUpdated" datetime="">25 Jul, 21:12 UTC</time> • From Quick Money Tool • 
+                        <span class="rate-change positive" id="rateChange">
+                            <span>↗</span> 0.001 (1.8%)
+                        </span>
+                    </div>
+
+                    <div class="converter-inputs">
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="number" class="amount-input" id="fromAmount" value="1" min="0" step="any" aria-label="Amount to convert from">
+                                <select class="currency-select" id="fromCurrency" aria-label="Currency to convert from">
+                                    <option value="">Loading currencies...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="swap-btn" id="swapBtn" aria-label="Swap currencies">⇅</button>
+
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="number" class="amount-input" id="toAmount" value="0.00" readonly aria-label="Converted amount">
+                                <select class="currency-select" id="toCurrency" aria-label="Currency to convert to">
+                                    <option value="">Loading currencies...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chart-section">
+                    <div class="time-filters" role="tablist" aria-label="Chart time period">
+                        <button class="time-btn" data-period="1D" role="tab">1D</button>
+                        <button class="time-btn" data-period="5D" role="tab">5D</button>
+                        <button class="time-btn active" data-period="1M" role="tab" aria-selected="true">1M</button>
+                        <button class="time-btn" data-period="1Y" role="tab">1Y</button>
+                        <button class="time-btn" data-period="5Y" role="tab">5Y</button>
+                        <button class="time-btn" data-period="Max" role="tab">Max</button>
+                    </div>
+                    <figure class="chart-container">
+                        <canvas id="rateChart" role="img" aria-label="Exchange rate history chart"></canvas>
+                    </figure>
+                </section>
+            </main>
+
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq">
+                    <button class="faq-question">What is the source of the exchange rates?</button>
+                    <div class="faq-answer">
+                        <p>Our exchange rates are sourced in real-time from the ExchangeRate-API, which aggregates data from multiple financial sources to provide accurate and up-to-date rates.</p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <button class="faq-question">How often are the exchange rates updated?</button>
+                    <div class="faq-answer">
+                        <p>The rates are updated every few minutes to ensure you have the most current information for your conversions. The last updated time is always displayed on the converter.</p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <button class="faq-question">Can I use this converter for historical data?</button>
+                    <div class="faq-answer">
+                        <p>Yes, our interactive charts allow you to view historical exchange rate data for various periods, including 1 day, 5 days, 1 month, 1 year, 5 years, and the maximum available data.</p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <button class="faq-question">Is this currency converter free to use?</button>
+                    <div class="faq-answer">
+                        <p>Absolutely. This is a free tool designed to provide quick and accurate currency conversions for everyone.</p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <button class="faq-question">What does 'mid-market rate' mean?</button>
+                    <div class="faq-answer">
+                        <p>The mid-market rate is the midpoint between the 'buy' and 'sell' rates of a currency on the open market. It's the rate you see on our converter and is considered the fairest exchange rate.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Why Trust Our Converter?</h3>
+                <p>Our currency converter uses real-time data from reliable financial sources, ensuring the highest level of accuracy. We provide the mid-market rate, which is the same rate banks and trading platforms use, so you can be confident you're getting a fair exchange.</p>
+                <h4>Reputable Financial Sources:</h4>
+                <ul>
+                    <li><a href="https://www.xe.com/" target="_blank" rel="noopener noreferrer">XE.com</a></li>
+                    <li><a href="https://www.oanda.com/" target="_blank" rel="noopener noreferrer">OANDA</a></li>
+                    <li><a href="https://www.reuters.com/markets/currencies/" target="_blank" rel="noopener noreferrer">Reuters</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-widget">
+                <h3>Our Other Financial Tools</h3>
+                <ul>
+                    <li><a href="https://taxcalc.quickmoneytool.com/" target="_blank" rel="noopener noreferrer">SARS Income Tax Calculator</a></li>
+                    <li><a href="https://retire.quickmoneytool.com/" target="_blank" rel="noopener noreferrer">Retirement Savings Calculator</a></li>
+                    <li><a href="https://drive.quickmoneytool.com/" target="_blank" rel="noopener noreferrer">Vehicle Finance Calculator</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <span>© <span id="currentYear">2025</span></span>
+                <span class="footer-separator">•</span>
+                <span>Created by</span>
+                <a href="https://thilisadiki.dev" target="_blank" rel="noopener noreferrer" class="footer-link creator">Jason Sadiki</a>
+                <span class="footer-separator">•</span>
+                <a href="#" class="footer-link" onclick="showNotification('Calculator feature coming soon!', 'info'); return false;">Calculator</a>
+                <span class="footer-separator">•</span>
+                <a href="#" class="footer-link" onclick="showNotification('Blog coming soon!', 'info'); return false;">Blog</a>
+                <span class="footer-separator">•</span>
+                <a href="#" class="footer-link" onclick="showPrivacyModal(); return false;">Privacy Policy</a>
+            </div>
+            <div class="footer-copyright">
+                Professional currency converter with real-time exchange rates
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
