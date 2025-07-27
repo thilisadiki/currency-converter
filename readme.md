@@ -73,7 +73,7 @@ This project was heavily optimized for search engines. Key optimizations include
 
 Meta Tags: Dynamic and descriptive title and meta description tags that update based on the selected currency pair.
 
-Semantic HTML: Use of tags like <main>, <section>, <aside>, <nav>, and <figure> to improve page structure and accessibility.
+Semantic HTML: Use of tags like main, section, aside, nav, and figure to improve page structure and accessibility.
 
 ARIA Roles: Added ARIA attributes to interactive elements like buttons and charts to enhance accessibility for screen readers.
 
