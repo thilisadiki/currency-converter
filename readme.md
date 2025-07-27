@@ -108,4 +108,4 @@ Open a Pull Request
 ## 📄 License
 Distributed under the MIT License. See LICENSE for more information.
 
-Created by Jason Sadiki - thilisadiki.dev
+Created by Jason Sadiki - https://thilisadiki.dev
